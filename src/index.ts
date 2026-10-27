@@ -1,0 +1,14 @@
+export {WikimediaEnterpriseClient,API_BASE} from './client.js';
+export type {EnterpriseOptions} from './client.js';
+export {login,EnterpriseSession,CredentialsSchema,parseCredential} from './auth.js';
+export type {EnterpriseCredentials,AuthOptions} from './auth.js';
+export {downloadSnapshot} from './downloads.js';
+export type {DownloadOptions} from './downloads.js';
+export {createWikimediaEnterpriseMcpServer} from './mcp.js';
+export type {WikimediaEnterpriseMcpOptions} from './mcp.js';
+export {toDocumentInput,canonicalJson} from './evidence.js';
+export {ArticleSchema,Operations} from './schemas.js';
+export type {Article,Operation} from './schemas.js';
+export {SourceError} from './transport.js';
+export type {ErrorCode} from './transport.js';
+export type {SourceRecord} from './types.js';

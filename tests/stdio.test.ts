@@ -1,0 +1,4 @@
+import {it,expect} from 'vitest';
+import {Client} from '@modelcontextprotocol/client';
+import {StdioClientTransport} from '@modelcontextprotocol/client/stdio';
+it('starts a real stdio server and lists data tools while locked without leaking credentials',async()=>{const transport=new StdioClientTransport({command:process.execPath,args:['dist/mcp-stdio.js'],env:{PATH:process.env.PATH??'',SYSTEMROOT:process.env.SYSTEMROOT??''},stderr:'pipe'});const client=new Client({name:'stdio-test',version:'1'});try{await client.connect(transport);expect((await client.listTools()).tools).toHaveLength(14);const r=await client.callTool({name:'list_projects',arguments:{}});expect(r.isError).toBe(true);expect(JSON.stringify(r)).toContain('unauthorized');}finally{await client.close();await transport.close();}});
